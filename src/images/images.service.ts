@@ -17,10 +17,7 @@ export class ImagesService {
 
   public delete(updateImage: string) {
     try {
-      stat('./upload/' + updateImage, function (err, stats) {
-        if (err) return;
-        unlinkSync('upload/' + updateImage);
-      });
+      unlinkSync('upload/' + updateImage);
       return { message: 'Deleted image...' };
     } catch (e) {
       console.log(e);
