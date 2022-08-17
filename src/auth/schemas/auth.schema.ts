@@ -1,5 +1,4 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { IsArray } from 'class-validator';
 import { Document } from 'mongoose';
 export type AuthDocument = Auth & Document;
 
@@ -14,8 +13,11 @@ export class Auth {
   @Prop()
   password: string;
 
-  @IsArray()
+  @Prop()
   roles: string[];
+
+  @Prop()
+  dateCreated: string;
 }
 
 export const AuthSchema = SchemaFactory.createForClass(Auth);

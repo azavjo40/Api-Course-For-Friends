@@ -12,4 +12,6 @@ export class RegisterDto {
 
   @IsArray()
   roles: string[];
+
+  dateCreated?: string;
 }

@@ -42,10 +42,10 @@ export class AuthService {
       const candidate = await this.auth.findOne({ username });
       if (candidate) return { message: 'This user already exists' };
       registerDto.password = await hash(password, 12);
+      registerDto.dateCreated = new Date(Date.now()).toUTCString();
       const user = await new this.auth(registerDto);
       await user.save();
       delete user.password;
-      console.log('register', user);
       return { access_token: this.jwtService.sign({ user }) };
     } catch (e) {
       console.log(e);
