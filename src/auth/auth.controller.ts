@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Post,
+  Put,
   Request,
   UseGuards,
   ValidationPipe,
@@ -28,9 +29,14 @@ export class AuthController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Put('auth/update/user')
+  updateUser(@Request() req: any, @Body() image: any) {
+    return this.authService.updateUser(req.user, image);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
-    console.log(req.user);
     return req.user;
   }
 }

@@ -18,6 +18,9 @@ export class Auth {
 
   @Prop()
   dateCreated: string;
+
+  @Prop()
+  image: string;
 }
 
 export const AuthSchema = SchemaFactory.createForClass(Auth);

@@ -14,4 +14,7 @@ export class RegisterDto {
   roles: string[];
 
   dateCreated?: string;
+
+  @IsString()
+  image?: string;
 }

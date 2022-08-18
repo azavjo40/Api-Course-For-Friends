@@ -51,4 +51,15 @@ export class AuthService {
       console.log(e);
     }
   }
+
+  public async updateUser(user: any, image: any) {
+    try {
+      const candidate = await this.auth.findOne({ _id: user._id });
+      candidate.image = image.image;
+      await new this.auth(candidate).save();
+      return { message: 'Updated image' };
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
