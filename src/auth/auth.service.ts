@@ -5,6 +5,7 @@ import { RegisterDto } from './dto/register.dto';
 import { Auth, AuthDocument } from './schemas/auth.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { AnyAaaaRecord } from 'dns';
 
 @Injectable()
 export class AuthService {
@@ -31,6 +32,16 @@ export class AuthService {
     try {
       delete user.password;
       return { access_token: this.jwtService.sign({ user }) };
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  public async getProfile(user: any) {
+    try {
+      const candidate: any = await this.auth.findOne({ _id: user._id });
+      const { password, ...result } = candidate._doc;
+      return result;
     } catch (e) {
       console.log(e);
     }
