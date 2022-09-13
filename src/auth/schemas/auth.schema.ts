@@ -19,6 +19,7 @@ export class Auth {
   @Prop()
   dateCreated: string;
 
+  @Prop()
   image?: string;
 }
 
