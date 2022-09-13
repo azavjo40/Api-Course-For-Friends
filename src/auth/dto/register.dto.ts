@@ -15,6 +15,5 @@ export class RegisterDto {
 
   dateCreated?: string;
 
-  @IsString()
   image?: string;
 }
